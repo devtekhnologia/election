@@ -87,7 +87,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-          fetch('http://192.168.200.23:8000/api/register_user/')
+          fetch('/api/register_user/')
             .then(response => response.json())
             .then(data => {
               const tableBody = document.getElementById('TableBody');

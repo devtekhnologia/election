@@ -113,7 +113,7 @@
 
     <!-- <script>
     //   document.addEventListener('DOMContentLoaded', () => {
-    //     fetch('http://192.168.200.23:8000/api/get_all_voters/')
+    //     fetch('/api/get_all_voters/')
     //       .then(response => response.json())
     //       .then(data => {
     //         const tableBody = document.getElementById('karyakartaTableBody');
@@ -151,7 +151,7 @@
 
 
     document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://192.168.200.23:8000/api/get_all_voters/')
+    fetch('/api/get_all_voters/')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('karyakartaTableBody');
@@ -197,7 +197,7 @@
       const pageSize = 50;  // Adjust page size as needed
   
       function fetchData(page) {
-          fetch(`http://192.168.200.23:8000/api/get_all_voters/?page=${page}&page_size=${pageSize}`)
+          fetch(`/api/get_all_voters/?page=${page}&page_size=${pageSize}`)
               .then(response => response.json())
               .then(data => {
                   const tableBody = document.getElementById('karyakartaTableBody');

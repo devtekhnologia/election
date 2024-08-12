@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col mx-5">
                             <br>
                             <p>Select Town
                             <select id="townSelect" class="form-select" aria-label="Select Town">
@@ -106,7 +106,7 @@
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Fetch towns data
-        fetch('http://192.168.200.23:8000/api/towns/')
+        fetch('/api/towns/')
             .then(response => response.json())
             .then(data => {
                 const townSelect = document.getElementById('townSelect');
@@ -121,7 +121,7 @@
                 townSelect.addEventListener('change', function () {
                     const selectedTownId = townSelect.value;
                     if (selectedTownId) {
-                        fetch(`http://192.168.200.23:8000/api/town_wise_voter_list/${selectedTownId}/`)
+                        fetch(`/api/town_wise_voter_list/${selectedTownId}/`)
                             .then(response => response.json())
                             .then(data => {
                                 const votersList = document.getElementById('votersList');

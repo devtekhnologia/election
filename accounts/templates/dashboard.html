@@ -142,7 +142,7 @@
 
 
           function fetchTownUserCount() {
-  fetch("http://192.168.200.23:8000/api/TownCountView/")
+  fetch("/api/TownCountView/")
     .then((res) => res.json())
     .then(data => {
       // Check if 'data' is an object and has the 'count' field
@@ -162,7 +162,7 @@ fetchTownUserCount();
 
         
           function fetchBoothUserCount() {
-  fetch("http://192.168.200.23:8000/api/BoothCountView/")
+  fetch("/api/BoothCountView/")
     .then((res) => res.json())
     .then(data => {
       // Check if 'data' is an object and has the 'count' field
@@ -182,7 +182,7 @@ fetchBoothUserCount();
 
         
           function fetchVotersCount() {
-            fetch("http://192.168.200.23:8000/api/voter_count")
+            fetch("/api/voter_count")
               .then((res) => res.json()).then(data =>{ 
                 document.getElementById('voters-count').innerHTML = data.count
                 console.log(data.count)

@@ -72,7 +72,7 @@ td {
 
     <script>
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('http://192.168.200.23:8000/api/booth_votes_summary/')
+    fetch('/api/booth_votes_summary/')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('user-table-body');

@@ -250,7 +250,7 @@
 <body>
     <div class="container"> -->
 
-        <!-- <div
+<!-- <div
           class="d-flex flex-column flex-shrink-0 p-3 bg-light"
           style="width: 280px; min-height: 100vh"
         >
@@ -498,10 +498,10 @@
             </div>
           </div>
         </div> -->
-    
-    
-    
-    
+
+
+
+
 <!--     
         <div class="row">
             <div class="col">
@@ -528,7 +528,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Fetch towns data
-            fetch('http://192.168.200.23:8000/api/towns/')
+            fetch('/api/towns/')
                 .then(response => response.json())
                 .then(data => {
                     const townSelect = document.getElementById('townSelect');
@@ -542,7 +542,7 @@
                     // Add event listener for town selection
                     townSelect.addEventListener('change', function () {
                         const selectedTownId = townSelect.value;
-                        fetch(`http://192.168.200.23:8000/api/booths_by_town/${selectedTownId}/`)
+                        fetch(`/api/booths_by_town/${selectedTownId}/`)
                             .then(response => response.json())
                             .then(data => {
                                 const boothSelect = document.getElementById('boothSelect');
@@ -557,7 +557,7 @@
                                 // Add event listener for booth selection
                                 boothSelect.addEventListener('change', function () {
                                     const selectedBoothId = boothSelect.value;
-                                    fetch(`http://192.168.200.23:8000/api/get_voters_by_booth/${selectedBoothId}/`)
+                                    fetch(`/api/get_voters_by_booth/${selectedBoothId}/`)
                                         .then(response => response.json())
                                         .then(data => {
                                             const votersList = document.getElementById('votersList');
@@ -591,111 +591,94 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Voter List</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Voter List</title>
 
-    <style>
-      .card {
-        box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
-      }
-      .avatar.sm {
-        width: 2.25rem;
-        height: 2.25rem;
-        font-size: 0.818125rem;
-      }
-      .table-nowrap .table td,
-      .table-nowrap .table th {
-        white-space: nowrap;
-      }
-      .table > :not(caption) > * > * {
-        padding: 0.75rem 1.25rem;
-        border-bottom-width: 1px;
-      }
-      table th {
-        font-weight: 600;
-        background-color: #eeecfd !important;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="d-flex">
-      {% include "navbar.html" %}
-      <div style="flex: 1">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">Election App</a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div
-              class="collapse navbar-collapse justify-content-end"
-              id="navbarSupportedContent"
-            >
-              <form class="d-flex">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
-             
-            </div>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <style>
+    .card {
+      box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+    }
+
+    .avatar.sm {
+      width: 2.25rem;
+      height: 2.25rem;
+      font-size: 0.818125rem;
+    }
+
+    .table-nowrap .table td,
+    .table-nowrap .table th {
+      white-space: nowrap;
+    }
+
+    .table> :not(caption)>*>* {
+      padding: 0.75rem 1.25rem;
+      border-bottom-width: 1px;
+    }
+
+    table th {
+      font-weight: 600;
+      background-color: #eeecfd !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="d-flex">
+    {% include "navbar.html" %}
+    <div style="flex: 1">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Election App</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+
           </div>
-        </nav>
-        <div class="container mt-3">
-          <div class="row">
+        </div>
+      </nav>
+      <div class="container mt-3">
+        <div class="row">
+          <div class="col-12 mb-3 mb-lg-5">
+            <div class="overflow-hidden card table-nowrap table-card">
+              <div class="card-header d-flex justify-content-center align-items-center">
+                <h5 class="mb-0 py-1">Voters List</h5>
+              </div>
 
+              <div class="row">
+                <div class="col mx-5">
+                  <br>
+                  <p>Select Town
+                    <select id="townSelect" class="form-select" aria-label="Select Town">
+                      <option value="" disabled selected>Select Town</option>
+                    </select>
+                  </p><br>
 
+                  <p>Select Booth
+                    <select id="boothSelect" class="form-select" aria-label="Booth select">
+                      <option value="" disabled selected>Select Booth</option>
+                    </select>
+                  </p><br>
+                  <p>Voters List</p>
+                  <ul id="votersList" class="list-group"></ul>
+                </div>
+              </div>
 
-            <div class="col-12 mb-3 mb-lg-5">
-                <div class="overflow-hidden card table-nowrap table-card">
-                    <div class="card-header d-flex justify-content-center align-items-center">
-                        <h5 class="mb-0 py-1">Voters List</h5>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <br>
-            
-                            <p>Select Town
-                            <select id="townSelect" class="form-select" aria-label="Select Town">
-                              <option value="" disabled selected>Select Town</option>
-                            </select>
-                            </p><br>
-            
-                            <p>Select Booth
-                            <select id="boothSelect" class="form-select" aria-label="Booth select">
-                              <option value="" disabled selected>Select Town</option>
-                            </select>
-                        </p><br>
-            
-                            <p>Voters List</p>
-                            <ul id="votersList" class="list-group" ></ul>
-                        </div>
-                    </div>
-                    
-                    <!-- <div class="table-responsive">
+              <!-- <div class="table-responsive">
                         <table class="table mb-0">
                             <thead class="small text-uppercase bg-body text-muted">
                                 <tr>
@@ -709,22 +692,20 @@
                             </tbody>
                         </table>
                     </div> -->
-                </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 
 
-    <!-- <script>
+  <!-- <script>
     //   document.addEventListener('DOMContentLoaded', () => {
-    //     fetch('http://192.168.200.23:8000/api/get_all_voters/')
+    //     fetch('/api/get_all_voters/')
     //       .then(response => response.json())
     //       .then(data => {
     //         const tableBody = document.getElementById('karyakartaTableBody');
@@ -762,7 +743,7 @@
 
 
     document.addEventListener('DOMContentLoaded', () => {
-    fetch('http://192.168.200.23:8000/api/get_all_voters/')
+    fetch('/api/get_all_voters/')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('karyakartaTableBody');
@@ -796,70 +777,71 @@
     </script> -->
 
 
-  
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-    // Fetch towns data
-    fetch('http://192.168.200.23:8000/api/towns/')
+      // Fetch towns data
+      fetch('/api/towns/')
         .then(response => response.json())
         .then(data => {
-            const townSelect = document.getElementById('townSelect');
-            data.forEach(town => {
-                const option = document.createElement('option');
-                option.value = town.town_id;
-                option.textContent = town.town_name;
-                townSelect.appendChild(option);
-            });
+          const townSelect = document.getElementById('townSelect');
+          data.forEach(town => {
+            const option = document.createElement('option');
+            option.value = town.town_id;
+            option.textContent = town.town_name;
+            townSelect.appendChild(option);
+          });
 
-            // Add event listener for town selection
-            townSelect.addEventListener('change', function () {
-                const selectedTownId = townSelect.value;
-                if (selectedTownId) {
-                    fetch(`http://192.168.200.23:8000/api/booths_by_town/${selectedTownId}/`)
+          // Add event listener for town selection
+          townSelect.addEventListener('change', function () {
+            const selectedTownId = townSelect.value;
+            if (selectedTownId) {
+              fetch(`/api/booths_by_town/${selectedTownId}/`)
+                .then(response => response.json())
+                .then(data => {
+                  const boothSelect = document.getElementById('boothSelect');
+                  boothSelect.innerHTML = '<option value="" disabled selected>Select Booth</option>'; // Reset and add default option
+                  data.forEach(booth => {
+                    const option = document.createElement('option');
+                    option.value = booth.booth_id;
+                    option.textContent = booth.booth_name;
+                    boothSelect.appendChild(option);
+                  });
+
+                  // Clear voters list when booths change
+                  document.getElementById('votersList').innerHTML = '';
+
+                  // Add event listener for booth selection
+                  boothSelect.addEventListener('change', function () {
+                    const selectedBoothId = boothSelect.value;
+                    if (selectedBoothId) {
+                      fetch(`/api/get_voters_by_booth/${selectedBoothId}/`)
                         .then(response => response.json())
                         .then(data => {
-                            const boothSelect = document.getElementById('boothSelect');
-                            boothSelect.innerHTML = '<option value="" disabled selected>Select Booth</option>'; // Reset and add default option
-                            data.forEach(booth => {
-                                const option = document.createElement('option');
-                                option.value = booth.booth_id;
-                                option.textContent = booth.booth_name;
-                                boothSelect.appendChild(option);
-                            });
-
-                            // Clear voters list when booths change
-                            document.getElementById('votersList').innerHTML = '';
-
-                            // Add event listener for booth selection
-                            boothSelect.addEventListener('change', function () {
-                                const selectedBoothId = boothSelect.value;
-                                if (selectedBoothId) {
-                                    fetch(`http://192.168.200.23:8000/api/get_voters_by_booth/${selectedBoothId}/`)
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            const votersList = document.getElementById('votersList');
-                                            votersList.innerHTML = ''; // Clear previous voters
-                                            data.voters.forEach(voter => {
-                                                const li = document.createElement('li');
-                                                li.className = 'list-group-item';
-                                                li.textContent = voter.voter_name;
-                                                votersList.appendChild(li);
-                                            });
-                                        })
-                                        .catch(error => console.error('Error fetching voters data:', error));
-                                }
-                            });
+                          const votersList = document.getElementById('votersList');
+                          votersList.innerHTML = ''; // Clear previous voters
+                          data.voters.forEach(voter => {
+                            const li = document.createElement('li');
+                            li.className = 'list-group-item';
+                            li.textContent = voter.voter_name;
+                            votersList.appendChild(li);
+                          });
                         })
-                        .catch(error => console.error('Error fetching booths data:', error));
-                }
-            });
+                        .catch(error => console.error('Error fetching voters data:', error));
+                    }
+                  });
+                })
+                .catch(error => console.error('Error fetching booths data:', error));
+            }
+          });
         })
         .catch(error => console.error('Error fetching towns data:', error));
-});
+    });
 
-</script>
-  
+  </script>
 
-   
-  </body>
+
+
+</body>
+
 </html>

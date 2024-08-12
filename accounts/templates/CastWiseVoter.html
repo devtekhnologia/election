@@ -121,7 +121,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
       <script>
         function fetchKarykartaCount() {
-          fetch("http://192.168.200.23:8000/api/town_user_register/")
+          fetch("/api/town_user_register/")
             .then((res) => res.json()).then(data =>{ 
               document.getElementById('Karyakarta-count').innerHTML = data.length
               console.log(data.length)
@@ -133,7 +133,7 @@
         fetchKarykartaCount();
       
         function fetchBoothUserCount() {
-          fetch("http://192.168.200.23:8000/api/register_user/")
+          fetch("/api/register_user/")
             .then((res) => res.json()).then(data =>{ 
               document.getElementById('booths-count').innerHTML = data.length
               console.log(data.length)
@@ -145,7 +145,7 @@
         fetchBoothUserCount();
       
         function fetchVotersCount() {
-          fetch("http://192.168.200.23:8000/api/voter_count")
+          fetch("/api/voter_count")
             .then((res) => res.json()).then(data =>{ 
               document.getElementById('voters-count').innerHTML = data.count
               console.log(data.count)

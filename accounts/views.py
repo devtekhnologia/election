@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegistrationForm
 
-API_ENDPOINT = "http://192.168.200.23:8000/api/politician_register/"
+API_ENDPOINT = "/api/politician_register/"
 
 def register(request):
     if request.method == 'POST':
@@ -31,7 +31,7 @@ def register(request):
 
 from .forms import LoginForm
 
-API_LOGIN_ENDPOINT = "http://192.168.200.23:8000/api/politician_login/"
+API_LOGIN_ENDPOINT = "/api/politician_login/"
 
 def login(request):
     if request.method == 'POST':

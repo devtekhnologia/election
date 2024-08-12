@@ -191,7 +191,7 @@
                   </button>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="http://192.168.200.23:8000/town_user/"
+                      <a class="dropdown-item" href="/town_user/"
                         >Add Town User</a>
                     </li>
                     <li><a class="dropdown-item" href="KaryakartaList.html">Town User List</a></li>
@@ -497,7 +497,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script>
       function fetchKarykartaCount() {
-        fetch("http://192.168.200.23:8000/api/town_user_register/")
+        fetch("/api/town_user_register/")
           .then((res) => res.json()).then(data =>{ 
 
 
@@ -513,7 +513,7 @@
       fetchKarykartaCount();
 
       function fetchBoothUserCount() {
-        fetch("http://192.168.200.23:8000/api/register_user/")
+        fetch("/api/register_user/")
           .then((res) => res.json()).then(data =>{ 
 
 
@@ -530,7 +530,7 @@
 
 
       function fetchVotersCount() {
-        fetch("http://192.168.200.23:8000/api/voters/")
+        fetch("/api/voters/")
           .then((res) => res.json()).then(data =>{ 
 
 
