@@ -1778,6 +1778,20 @@ def get_booth_user_info_with_id(request, user_id):
     return JsonResponse(data, safe=False)
 
 
+# Get Town user wise voter data
 
+def get_voter_list_by_town_user(request, user_town_town_user_id):
+    try:
+        user_id = int(user_town_town_user_id)
+    except ValueError:
+        return HttpResponseBadRequest("Invalid 'user_id' parameter")
+
+    with connection.cursor() as cursor:
+        cursor.callproc('sp_GetVoterListByTownUser', [user_town_town_user_id])
+        result = cursor.fetchall()
+        
+        data = [dict(zip([desc[0] for desc in cursor.description], row)) for row in result]
+
+    return JsonResponse(data, safe=False)
 
     

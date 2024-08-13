@@ -107,6 +107,7 @@ from .views import get_town_user_info
 from .views import get_town_user_info_with_id
 from .views import get_booth_user_info
 from .views import get_booth_user_info_with_id
+from .views import get_voter_list_by_town_user
 
 
 
@@ -187,6 +188,7 @@ urlpatterns = [
     path('town_user_info/<int:user_id>/', get_town_user_info_with_id, name='get_town_user_info_with_id'),
     path('booth_user_info/', get_booth_user_info, name='get_all_booth_user_info'),
     path('booth_user_info/<int:user_id>/', get_booth_user_info_with_id, name='get_booth_user_info_with_id'),
+    path('get_voter_list_by_town_user/<int:user_town_town_user_id>/', get_voter_list_by_town_user, name='voter_list_by_town_user'),
 
     
 # admin pannel 

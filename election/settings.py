@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4g@ro_va!9bm&#2xzijsg7t=$sy7895b9)%ye-8(z03xyome_g
 DEBUG = True
 
 # ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['127.0.0.1','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','192.168.200.23','localhost']
 
 
 # Application definition
@@ -96,7 +96,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'vote',
         'USER': 'root',
-        'PASSWORD': 'Raghav@sql',
+        'PASSWORD': 'Rahul@123',
         'HOST': 'localhost',  
         'PORT': '3306',        
     }
