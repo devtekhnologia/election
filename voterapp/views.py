@@ -1778,6 +1778,54 @@ def get_booth_user_info_with_id(request, user_id):
     return JsonResponse(data, safe=False)
 
 
+def booth_votes_summary(request):
+    with connection.cursor() as cursor:
+        cursor.execute("""
+                        SELECT 
+                row_index,
+                booth_name,
+                mycount,
+                town_name,
+                taluka_name
+            FROM (
+                SELECT 
+                    ROW_NUMBER() OVER (ORDER BY COUNT(*) DESC) AS row_index,
+                    b.booth_name AS booth_name,
+                    COUNT(*) AS mycount,
+                    t.town_name AS town_name,
+                    ta.panchayat_samiti_name AS taluka_name
+                FROM 
+                    vote.tbl_voter v
+                INNER JOIN 
+                    vote.tbl_booth b ON v.voter_booth_id = b.booth_id
+                INNER JOIN
+                    vote.tbl_town t ON v.voter_town_id = t.town_id
+                INNER JOIN
+                    vote.tbl_panchayat_samiti ta ON t.town_panchayat_samiti_id = ta.panchayat_samiti_id  
+                GROUP BY 
+                    b.booth_name, t.town_name, ta.panchayat_samiti_name
+            ) AS subquery
+            ORDER BY 
+                row_index;
 
+
+
+        """)
+        rows = cursor.fetchall()
+        
+    # Format the results as a list of dictionaries
+    result = []
+    for row in rows:
+        result.append({
+            'sr no' : row[0],
+            'booth_name': row[1],
+            'town_name' : row[3],
+            'taluka_name' : row[4],
+            'mycount': row[2]
+        })
+    
+    return JsonResponse(result, safe=False)
+
+      
 
     

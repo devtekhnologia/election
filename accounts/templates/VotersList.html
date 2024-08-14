@@ -629,28 +629,9 @@
 </head>
 
 <body>
-  <div class="d-flex">
-    {% include "navbar.html" %}
+  {% include "navbar.html" %}
+  <div id="contentWrapper" class="p-4">
     <div style="flex: 1">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Election App</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
-
-          </div>
-        </div>
-      </nav>
       <div class="container mt-3">
         <div class="row">
           <div class="col-12 mb-3 mb-lg-5">
@@ -673,25 +654,20 @@
                       <option value="" disabled selected>Select Booth</option>
                     </select>
                   </p><br>
+                  <p id="voterCount" class="mt-2"></p> <!-- Added for displaying voter count -->
+
                   <p>Voters List</p>
-                  <ul id="votersList" class="list-group"></ul>
+                  <table id="votersTable" class="table">
+                    <thead>
+                      <tr>
+                        <th>Serial Number</th>
+                        <th>Voter Name</th>
+                      </tr>
+                    </thead>
+                    <tbody id="votersTableBody">
+
                 </div>
               </div>
-
-              <!-- <div class="table-responsive">
-                        <table class="table mb-0">
-                            <thead class="small text-uppercase bg-body text-muted">
-                                <tr>
-                                    <th style="text-align: center">Sr. No.</th>
-                                    <th style="text-align: center">Voter Name</th>
-                                    <th style="text-align: center">Booth Name</th>
-                                    
-                                </tr>
-                            </thead>
-                            <tbody id="karyakartaTableBody">
-                            </tbody>
-                        </table>
-                    </div> -->
             </div>
           </div>
         </div>
@@ -709,30 +685,30 @@
     //       .then(response => response.json())
     //       .then(data => {
     //         const tableBody = document.getElementById('karyakartaTableBody');
-  
+
     //         data.forEach(user => {
     //           const row = document.createElement('tr');
-  
+
     //           const nameCell = document.createElement('td');
     //           nameCell.style.textAlign = 'center';
     //           nameCell.textContent = user.voter_id;
     //           row.appendChild(nameCell);
-  
+
     //           const contactCell = document.createElement('td');
     //           contactCell.style.textAlign = 'center';
     //           contactCell.textContent = user.voter_name;
     //           row.appendChild(contactCell);
-  
+
     //           const passwordCell = document.createElement('td');
     //           passwordCell.style.textAlign = 'center';
     //           passwordCell.textContent = user.booth_name;
     //           row.appendChild(passwordCell);
-  
+
     //           const townIdCell = document.createElement('td');
     //           townIdCell.style.textAlign = 'center';
     //           townIdCell.textContent = user.voter_town_name;
     //           row.appendChild(townIdCell);
-  
+
     //           tableBody.appendChild(row);
     //         });
     //       })
@@ -743,42 +719,41 @@
 
 
     document.addEventListener('DOMContentLoaded', () => {
-    fetch('/api/get_all_voters/')
+      fetch('/api/get_all_voters/')
         .then(response => response.json())
         .then(data => {
-            const tableBody = document.getElementById('karyakartaTableBody');
-  
-            data.voters.forEach(user => {
-                const row = document.createElement('tr');
-  
-                const nameCell = document.createElement('td');
-                nameCell.style.textAlign = 'center';
-                nameCell.textContent = user.voter_id;
-                row.appendChild(nameCell);
-  
-                const contactCell = document.createElement('td');
-                contactCell.style.textAlign = 'center';
-                contactCell.textContent = user.voter_name;
-                row.appendChild(contactCell);
-  
-                const passwordCell = document.createElement('td');
-                passwordCell.style.textAlign = 'center';
-                passwordCell.textContent = user.booth_name;
-                row.appendChild(passwordCell);
-  
-                tableBody.appendChild(row);
-            });
+          const tableBody = document.getElementById('karyakartaTableBody');
+
+          data.voters.forEach(user => {
+            const row = document.createElement('tr');
+
+            const nameCell = document.createElement('td');
+            nameCell.style.textAlign = 'center';
+            nameCell.textContent = user.voter_id;
+            row.appendChild(nameCell);
+
+            const contactCell = document.createElement('td');
+            contactCell.style.textAlign = 'center';
+            contactCell.textContent = user.voter_name;
+            row.appendChild(contactCell);
+
+            const passwordCell = document.createElement('td');
+            passwordCell.style.textAlign = 'center';
+            passwordCell.textContent = user.booth_name;
+            row.appendChild(passwordCell);
+
+            tableBody.appendChild(row);
+          });
         })
         .catch(error => {
-            console.error('Error fetching data:', error);
+          console.error('Error fetching data:', error);
         });
-});
+    });
 
-    </script> -->
-
-
+  </script> -->
 
   <script>
+
     document.addEventListener('DOMContentLoaded', function () {
       // Fetch towns data
       fetch('/api/towns/')
@@ -808,23 +783,34 @@
                     boothSelect.appendChild(option);
                   });
 
-                  // Clear voters list when booths change
-                  document.getElementById('votersList').innerHTML = '';
+                  // Clear voters table when booths change
+                  document.getElementById('votersTableBody').innerHTML = '';
+                  document.getElementById('voterCount').textContent = '';
 
                   // Add event listener for booth selection
                   boothSelect.addEventListener('change', function () {
                     const selectedBoothId = boothSelect.value;
                     if (selectedBoothId) {
-                      fetch(`/api/get_voters_by_booth/${selectedBoothId}/`)
+                      fetch(`http://127.0.0.1:8000/api/get_voters_by_booth/${selectedBoothId}/`)
                         .then(response => response.json())
                         .then(data => {
-                          const votersList = document.getElementById('votersList');
-                          votersList.innerHTML = ''; // Clear previous voters
-                          data.voters.forEach(voter => {
-                            const li = document.createElement('li');
-                            li.className = 'list-group-item';
-                            li.textContent = voter.voter_name;
-                            votersList.appendChild(li);
+                          const votersTableBody = document.getElementById('votersTableBody');
+                          const voterCount = document.getElementById('voterCount');
+
+                          voterCount.textContent = `Total Voters: ${data.voters.length}`;
+
+                          votersTableBody.innerHTML = ''; // Clear previous voters
+                          data.voters.forEach((voter, index) => {
+                            const row = document.createElement('tr');
+                            const serialCell = document.createElement('td');
+                            const nameCell = document.createElement('td');
+
+                            serialCell.textContent = index + 1;
+                            nameCell.textContent = voter.voter_name;
+
+                            row.appendChild(serialCell);
+                            row.appendChild(nameCell);
+                            votersTableBody.appendChild(row);
                           });
                         })
                         .catch(error => console.error('Error fetching voters data:', error));
@@ -837,10 +823,7 @@
         })
         .catch(error => console.error('Error fetching towns data:', error));
     });
-
   </script>
-
-
 
 </body>
 

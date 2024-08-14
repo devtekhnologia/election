@@ -21,5 +21,4 @@ urlpatterns = [
     path('townwisevoterlist/', TownWiseVoterList, name = 'TownWiseVoterList'),
     path('castwisevoter/', CastWiseVoter, name = 'CastWiseVoter')
 
-
 ]

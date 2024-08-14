@@ -1,166 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 
-    <style>
-      .card {
-        box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
-      }
-      .avatar.sm {
-        width: 2.25rem;
-        height: 2.25rem;
-        font-size: 0.818125rem;
-      }
-      .table-nowrap .table td,
-      .table-nowrap .table th {
-        white-space: nowrap;
-      }
-      .table > :not(caption) > * > * {
-        padding: 0.75rem 1.25rem;
-        border-bottom-width: 1px;
-      }
-      table th {
-        font-weight: 600;
-        background-color: #eeecfd !important;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="d-flex">
-      {% include "navbar.html" %}
-      <div style="flex: 1">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">Election App</a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div
-              class="collapse navbar-collapse justify-content-end"
-              id="navbarSupportedContent"
-            >
-              <form class="d-flex">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
-             
-            </div>
-          </div>
-        </nav>
-        <div class="container mt-3">
-          <div class="row">
-            <div class="col-12 mb-3 mb-lg-5">
-              <div class="overflow-hidden card table-nowrap table-card">
-                <div
-                  class="card-header d-flex justify-content-center align-items-center"
-                >
-                  <h5 class="mb-0 py-1" >Karyakarta List</h5>
-                </div>
-                <!-- <div class="table-responsive">
-                  <table class="table mb-0">
-                    <thead class="small text-uppercase bg-body text-muted">
-                      <tr>
-                        <th style="text-align: center">Name</th>
-                        <th style="text-align: center">Contact Number</th>
-                        <th style="text-align: center">Password</th>
-                        <th style="text-align: center">Town ID</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td style="text-align: center">Rahul</td>
-                        <td style="text-align: center">134567890</td>
-                        <td style="text-align: center">Rahil123</td>
-                        <td style="text-align: center">1</td>
-                      </tr>
-                      <tr>
-                        <td style="text-align: center">Rahul</td>
-                        <td style="text-align: center">134567890</td>
-                        <td style="text-align: center">Rahil123</td>
-                        <td style="text-align: center">1</td>
-                      </tr>
-                      <tr>
-                        <td style="text-align: center">Rahul</td>
-                        <td style="text-align: center">134567890</td>
-                        <td style="text-align: center">Rahil123</td>
-                        <td style="text-align: center">1</td>
-                      </tr>
-                      <tr>
-                        <td style="text-align: center">Rahul</td>
-                        <td style="text-align: center">134567890</td>
-                        <td style="text-align: center">Rahil123</td>
-                        <td style="text-align: center">1</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 
+  <style>
+    .card {
+      box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+    }
 
-                <div class="table-responsive">
-                  <table class="table mb-0">
-                    <thead class="small text-uppercase bg-body text-muted">
-                      <tr>
-                        <th style="text-align: center">Name</th>
-                        <th style="text-align: center">Contact Number</th>
-                        <th style="text-align: center">Password</th>
-                        <th style="text-align: center">Town ID</th>
-                      </tr>
-                    </thead>
-                    <tbody id="karyakartaTableBody">
-                      <!-- Data will be inserted here -->
-                    </tbody>
-                  </table>
-                </div>
+    .avatar.sm {
+      width: 2.25rem;
+      height: 2.25rem;
+      font-size: 0.818125rem;
+    }
 
+    .table-nowrap .table td,
+    .table-nowrap .table th {
+      white-space: nowrap;
+    }
 
+    .table> :not(caption)>*>* {
+      padding: 0.75rem 1.25rem;
+      border-bottom-width: 1px;
+    }
+
+    table th {
+      font-weight: 600;
+      background-color: #eeecfd !important;
+    }
+  </style>
+</head>
+
+<body>
+  {% include "navbar.html" %}
+  <div id="contentWrapper" class="p-4">
+    <div style=" flex: 1">
+      <div class="container mt-3">
+        <div class="row">
+          <div class="col-12 mb-3 mb-lg-5">
+            <div class="overflow-hidden card table-nowrap table-card">
+              <div class="card-header d-flex justify-content-center align-items-center">
+                <h5 class="mb-0 py-1">Karyakarta List</h5>
               </div>
+              <div class="table-responsive">
+                <table class="table mb-0">
+                  <thead class="small text-uppercase bg-body text-muted">
+                    <tr>
+                      <th style="text-align: center">Sr. No.</th>
+                      <th style="text-align: center">Name</th>
+                      <th style="text-align: center">Contact Number</th>
+                      <th style="text-align: center">Town Name</th>
+                    </tr>
+                  </thead>
+                  <tbody id="karyakartaTableBody">
+                    <!-- Data will be inserted here -->
+                  </tbody>
+                </table>
+              </div>
+
+
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        fetch('/api/town_user_register/')
+  <script>
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   fetch('/api/town_user_register/')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       const tableBody = document.getElementById('karyakartaTableBody');
+
+    //       data.forEach(user => {
+    //         const row = document.createElement('tr');
+
+    //         const nameCell = document.createElement('td');
+    //         nameCell.style.textAlign = 'center';
+    //         nameCell.textContent = user.town_user_name;
+    //         row.appendChild(nameCell);
+
+    //         const contactCell = document.createElement('td');
+    //         contactCell.style.textAlign = 'center';
+    //         contactCell.textContent = user.town_user_contact_number;
+    //         row.appendChild(contactCell);
+
+    //         const passwordCell = document.createElement('td');
+    //         passwordCell.style.textAlign = 'center';
+    //         passwordCell.textContent = user.town_user_password;
+    //         row.appendChild(passwordCell);
+
+    //         const townIdCell = document.createElement('td');
+    //         townIdCell.style.textAlign = 'center';
+    //         townIdCell.textContent = user.town_user_town_id;
+    //         row.appendChild(townIdCell);
+
+    //         tableBody.appendChild(row);
+    //       });
+    //     })
+    //     .catch(error => {
+    //       console.error('Error fetching data:', error);
+    //     });
+    // });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('/api/town_user_info/')
           .then(response => response.json())
           .then(data => {
             const tableBody = document.getElementById('karyakartaTableBody');
   
             data.forEach(user => {
               const row = document.createElement('tr');
-  
+              
+              const idCell = document.createElement('td');
+              idCell.style.textAlign = 'center';
+              idCell.textContent = user.town_user_id;
+              row.appendChild(idCell);
+
               const nameCell = document.createElement('td');
               nameCell.style.textAlign = 'center';
               nameCell.textContent = user.town_user_name;
@@ -171,15 +138,10 @@
               contactCell.textContent = user.town_user_contact_number;
               row.appendChild(contactCell);
   
-              const passwordCell = document.createElement('td');
-              passwordCell.style.textAlign = 'center';
-              passwordCell.textContent = user.town_user_password;
-              row.appendChild(passwordCell);
-  
-              const townIdCell = document.createElement('td');
-              townIdCell.style.textAlign = 'center';
-              townIdCell.textContent = user.town_user_town_id;
-              row.appendChild(townIdCell);
+              const townNameCell = document.createElement('td');
+              townNameCell.style.textAlign = 'center';
+              townNameCell.textContent = user.town_names;
+              row.appendChild(townNameCell);
   
               tableBody.appendChild(row);
             });
@@ -188,8 +150,9 @@
             console.error('Error fetching data:', error);
           });
       });
-    </script>
+  </script>
 
-   
-  </body>
+
+</body>
+
 </html>

@@ -19,44 +19,12 @@
       </style>
   </head>
   <body>
-    <div class="d-flex">
+    {% include "navbar.html" %}
+    <div id="contentWrapper" class="p-4">
       
-      {% include "navbar.html" %}
       
       <div style="flex: 1">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">Election App</a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div
-              class="collapse navbar-collapse justify-content-end"
-              id="navbarSupportedContent"
-            >
-              <form class="d-flex">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
-             
-            </div>
-          </div>
-        </nav>
+        
         <div class="container">
           <div class="row">
             <div class="col-xl-6 col-lg-6">
