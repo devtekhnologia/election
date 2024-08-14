@@ -213,7 +213,7 @@ class User(models.Model):
     user_name = models.CharField(max_length=100)
     user_phone = models.CharField(max_length=20)
     user_password = models.CharField(max_length=256)
-    user_town_user_id = models.IntegerField()
+    user_town_town_user_id = models.IntegerField()
     user_booth_id = models.IntegerField()
 
     def save(self, *args, **kwargs):        

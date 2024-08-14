@@ -1,127 +1,4 @@
-<!-- 
-
-
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Politician Dashboard</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-    <div class="container" onclick="closeSidebar(event)">
-        <div class="header">
-            <button class="menu-button" onclick="toggleSidebar(event)">☰</button>
-            <h2>Dashboard</h2>
-        </div>
-        <div class="scroll-container">
-            <div class="row">
-                <div class="section" onclick="navigateTo('/')">
-                    <div class="gradient circular-square">
-                        <p class="section-text">Votersss</p>
-                    </div>
-                </div>
-                <div class="section" onclick="navigateTo('{% url 'user_list' %}')">
-                    <div class="gradient circular-square">
-                        <p class="section-text">Karyakarta List</p>
-                    </div>
-                </div>
-                <div class="section" onclick="window.open('https://shivsena.in/', '_blank')">
-                    <div class="gradient circular-square">
-                        <p class="section-text">Political Party Profile</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="section" onclick="navigateTo('polls/')">
-                    <div class="gradient circular-square">
-                        <p class="section-text">Current Voter's Count</p>
-                    </div>
-                </div>
-                <div class="section" onclick="navigateTo('exit-poll/')">
-                    <div class="gradient circular-square">
-                        <p class="section-text">Castwise</p>
-                    </div>
-                </div>
-                <div class="section" onclick="navigateTo('exit-poll/')">
-                    <div class="gradient circular-square">
-                        <p class="section-text">Exit Poll</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="footer" onclick="openModal()">
-            <div class="gradient contact">
-                <span>☎</span>
-                <p class="section-text">Contact Us</p>
-            </div>
-        </button>
-        <div id="contact-modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-item">
-                    <span>☎</span>
-                    <p>Call Us</p>
-                </div>
-                <div class="modal-item">
-                    <span>WhatsApp</span>
-                    <p>WhatsApp</p>
-                </div>
-                <div class="modal-item">
-                    <span>✉</span>
-                    <p>Email Us</p>
-                </div>
-                <button class="close-button" onclick="closeModal()">Close</button>
-            </div>
-        </div>
-    </div>
-    <div id="sidebar" class="sidebar">
-        <a href="#">Home</a>
-        <a href="#">Profile</a>
-        <a href="#">Messages</a>
-        <a href="#">Settings</a>
-    </div>
-    <script>
-        function toggleSidebar(event) {
-            event.stopPropagation();
-            var sidebar = document.getElementById("sidebar");
-            if (sidebar.style.width === "250px") {
-                sidebar.style.width = "0";
-            } else {
-                sidebar.style.width = "250px";
-            }
-        }
-
-        function closeSidebar(event) {
-            var sidebar = document.getElementById("sidebar");
-            if (event.target.closest('.sidebar')) {
-                return;
-            }
-            if (sidebar.style.width === "250px") {
-                sidebar.style.width = "0";
-            }
-        }
-
-        function navigateTo(url) {
-            window.location.href = url;
-        }
-
-        function openModal() {
-            document.getElementById('contact-modal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('contact-modal').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
- -->
-
-
-
-
- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -161,7 +38,7 @@
           <hr />
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <a href="dashboard.html" class="nav-link active" aria-current="page"></a>
+              <a href="index.html" class="nav-link active" aria-current="page">
                 Home
               </a>
             </li>
@@ -191,10 +68,11 @@
                   </button>
                   <ul class="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="/town_user/"
-                        >Add Town User</a>
+                      <a class="dropdown-item" href="./AddTownUser.html"
+                        >Add Town User</a
+                      >
                     </li>
-                    <li><a class="dropdown-item" href="KaryakartaList.html">Town User List</a></li>
+                    <li><a class="dropdown-item" href="#">Town List</a></li>
                   </ul>
                 </div>
               </li>
@@ -420,8 +298,6 @@
                   <div class="row align-items-center mb-2 d-flex">
                     <div class="col-8">
                       <h2 class="d-flex align-items-center mb-0">Count</h2>
-                      <h2 id="voters-count"></h2>
-
                     </div>
                   </div>
                 </div>
@@ -434,13 +310,11 @@
                     <i class="fas fa-users"></i>
                   </div>
                   <div class="mb-4">
-                    <h5 class="card-title mb-0">Booth User Count</h5>
+                    <h5 class="card-title mb-0">Voters</h5>
                   </div>
                   <div class="row align-items-center mb-2 d-flex">
                     <div class="col-8">
-                      <!-- <h2 class="d-flex align-items-center mb-0">Count</h2> -->
-                      <h2 id="booths-count">Count</h2>
-
+                      <h2 class="d-flex align-items-center mb-0">Count</h2>
                     </div>
                   </div>
                 </div>
@@ -453,8 +327,7 @@
                     <i class="fas fa-ticket-alt"></i>
                   </div>
                   <div class="mb-4">
-                    <h5 class="card-title mb-0">Town User Count</h5>
-                    <p id="Karyakarta-count"></p>
+                    <h5 class="card-title mb-0">Karyakarta Count</h5>
                   </div>
                   <div class="row align-items-center mb-2 d-flex">
                     <div class="col-8">
@@ -471,7 +344,7 @@
                     <i class="fas fa-dollar-sign"></i>
                   </div>
                   <div class="mb-4">
-                    <h5 class="card-title mb-0">Total Voters Count</h5>
+                    <h5 class="card-title mb-0">Voters</h5>
                   </div>
                   <div class="row align-items-center mb-2 d-flex">
                     <div class="col-8">
@@ -497,53 +370,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script>
       function fetchKarykartaCount() {
-        fetch("/api/town_user_register/")
-          .then((res) => res.json()).then(data =>{ 
-
-
-            document.getElementById('Karyakarta-count').innerHTML = data.length
-            console.log(data.length)
-        
-          }
-        )
+        fetch("http://192.168.200.23:8000/api/town_user_register/")
+          .then((res) => {
+            console.log(res);
+          })
           .catch((err) => {
             console.log(err);
           });
       }
       fetchKarykartaCount();
-
-      function fetchBoothUserCount() {
-        fetch("/api/register_user/")
-          .then((res) => res.json()).then(data =>{ 
-
-
-            document.getElementById('booths-count').innerHTML = data.length
-            console.log(data.length)
-        
-          }
-        )
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-      fetchBoothUserCount()
-
-
-      function fetchVotersCount() {
-        fetch("/api/voters/")
-          .then((res) => res.json()).then(data =>{ 
-
-
-            document.getElementById('voters-count').innerHTML = data.length
-            console.log(data.length)
-        
-          }
-        )
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-      fetchVotersCount() 
     </script>
     <script>
         const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];

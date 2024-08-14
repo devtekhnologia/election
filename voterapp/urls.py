@@ -69,12 +69,13 @@ from .views import VoterlistListCreate, VoterlistRetrieveUpdateDestroy
 from .views import get_voters_by_booth
 from .views import GetVoterByCastView
 from .views import PoliticianLoginView
+from .views import PoliticianLogoutView
 from .views import PoliticianCreate
 from .views import ReligionListCreate
 from .views import ReligionRetriveUpdateDestroy
 # from .views import Favour_non_favourListCreate
 from .views import Favour_non_favourRetriveUpdateDestroy
-from .views import Town_userLogin
+from .views import Town_user_Login, Town_user_Login
 from .views import Town_userCreate
 from .views import get_town_voter_list
 from .views import get_taluka_voter_list
@@ -108,6 +109,9 @@ from .views import get_town_user_info_with_id
 from .views import get_booth_user_info
 from .views import get_booth_user_info_with_id
 from .views import get_voter_list_by_town_user
+from .views import get_user_by_booth_id
+from .views import get_town_users_by_town_id
+from .views import booth_votes_summary
 
 
 
@@ -147,11 +151,13 @@ urlpatterns = [
     path('voters_by_cast/<str:voter_cast>/', GetVoterByCastView.as_view(), name='voter-by-cast'),
     path('politician_register/', PoliticianCreate.as_view(), name='Politician-list'), 
     path('politician_login/', PoliticianLoginView.as_view(), name='politician-login'),
+    path('politician_logout/', PoliticianLogoutView.as_view(), name='politician-logout'),
     path('religion/', ReligionListCreate.as_view(), name='religion-list'),
     path('religion/<int:pk>/', ReligionRetriveUpdateDestroy.as_view(), name='religion-detail'),
     # path('favour/', Favour_non_favourListCreate.as_view(), name='Favour_non_favour-list'),
     path('favour/<int:pk>/', Favour_non_favourRetriveUpdateDestroy.as_view(), name='Favour_non_favour-detail'),
-    path('town_user_login/', Town_userLogin.as_view(), name='town_user-login'),
+    path('town_user_login/', Town_user_Login.as_view(), name='town_user-login'),
+    path('town_user_login/', Town_user_Login.as_view(), name='town_user-login'),
     path('town_user_register/', Town_userCreate.as_view(), name='town_user-list'), 
     path('get_town_voter_list/<int:town_user_town_id>/', get_town_voter_list, name='get_voters_by_town_user'),
     path('get_taluka_voter_list/<int:politician_taluka_id>/', get_taluka_voter_list, name='get_voters_by_town_user'),
@@ -189,6 +195,9 @@ urlpatterns = [
     path('booth_user_info/', get_booth_user_info, name='get_all_booth_user_info'),
     path('booth_user_info/<int:user_id>/', get_booth_user_info_with_id, name='get_booth_user_info_with_id'),
     path('get_voter_list_by_town_user/<int:user_town_town_user_id>/', get_voter_list_by_town_user, name='voter_list_by_town_user'),
+    path('get_user_by_booth_id/<int:user_booth_booth_id>/', get_user_by_booth_id, name='get_user_by_booth_id'),
+    path('get_town_users_by_town_id/<int:user_town_town_id>/', get_town_users_by_town_id, name='get_town_users_by_town_id'),
+    path('booth_votes_summary/', booth_votes_summary, name='booth_votes_summary'),
 
     
 # admin pannel 

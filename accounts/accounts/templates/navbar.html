@@ -21,18 +21,90 @@
   <div class="d-flex">
 
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px; min-height: 100vh">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <a href="http://192.168.200.23:8000/api/admin/"
+        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32">
-          <use xlink:href="#bootstrap"></use>
+          <a href="http://192.168.200.23:8000/api/admin/" class="nav-link active" aria-current="page">
         </svg>
         <span class="fs-4">Dashboard</span>
       </a>
       <hr />
+      <!-- <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="dashboard.html" class="nav-link active" aria-current="page"></a>
+                Home
+              </a>
+            </li>
+            <hr />
+            <li>
+                <div class="dropdown">
+                  <button
+                    class="nav-link link-dark"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Town
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      fill="currentColor"
+                      class="bi bi-arrow-down"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"
+                      />
+                    </svg>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="http://192.168.200.23:8000/town_user/"
+                        >Add Town User</a>
+                    </li>
+                    <li><a class="dropdown-item" href="KaryakartaList/">Town User List</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <a href="AddBoothUser.html" class="nav-link link-dark"> Booth </a>
+              </li>
+            <li>
+              <a href="#" class="nav-link link-dark"> Voters </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link link-dark">
+                Booth User List
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link link-dark">
+                Political Party Profile
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link link-dark"> Current Voter's Count </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link link-dark"> Castwise </a>
+            </li>
+            <li>
+              <a href="ExitPoll.html" class="nav-link link-dark"> Exit Poll </a>
+            </li>
+          
+            <hr />
+            <li>
+              <a href="#" class="nav-link link-dark"> Setting </a>
+            </li>
+          </ul> -->
+
+
+
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="index.html" class="nav-link active" aria-current="page">
-            Home
-          </a>
+          <a href="http://192.168.200.23:8000/api/admin/" class="nav-link active" aria-current="page">Home</a>
         </li>
         <hr />
         <li>
@@ -47,14 +119,17 @@
             </button>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="./AddTownUser.html">Add Town User</a>
+                <a class="dropdown-item" href="http://192.168.200.23:8000/api/admin/town_user/">Add Town User</a>
+              </li> 
+              <li>
+                <a class="dropdown-item" href="http://192.168.200.23:8000/api/admin/KaryakartaList/">Town User List</a>
               </li>
-              <li><a class="dropdown-item" href="#">Town List</a></li>
             </ul>
           </div>
         </li>
         <li>
-          <a href="AddBoothUser.html" class="nav-link link-dark"> Booth </a>
+          <!--<a href="#" class="nav-link link-dark">Booth User List</a> -->
+          <a href="http://192.168.200.23:8000/api/admin/booth_user/" class="nav-link link-dark"> Booth User List </a>
         </li>
         <li>
           <div class="dropdown">
@@ -74,36 +149,36 @@
                 <a class="dropdown-item" href="{% url 'VotersList' %}">Booth Wise Voter List</a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">Town Wise Voter List</a>
+                <a class="dropdown-item" href="{% url 'TownWiseVoterList' %}">Town Wise Voter List</a>
               </li>
             </ul>
           </div>
         </li>
+        <!-- <li>
+              <a href="#" class="nav-link link-dark">Booth User List</a>
+            </li> -->
         <li>
-          <a href="KaryakartaList.html" class="nav-link link-dark">
-            Karyakarta List
-          </a>
+          <a href="https://shivsena.in/" class="nav-link link-dark">Political Party Profile</a>
         </li>
         <li>
-          <a href="#" class="nav-link link-dark">
-            Political Party Profile
-          </a>
+          <a href="#" class="nav-link link-dark">Current Voter's Count</a>
         </li>
         <li>
-          <a href="#" class="nav-link link-dark"> Current Voter's Count </a>
+          <a href="#" class="nav-link link-dark">Castwise</a>
         </li>
         <li>
-          <a href="#" class="nav-link link-dark"> Castwise </a>
+          <a href="http://192.168.200.23:8000/api/admin/exitpoll/" class="nav-link link-dark">Exit Poll</a>
         </li>
         <li>
-          <a href="ExitPoll.html" class="nav-link link-dark"> Exit Poll </a>
+          <a href="{% url 'AddBoothUser' %}" class="nav-link link-dark"> Booth </a>
         </li>
-
         <hr />
         <li>
-          <a href="#" class="nav-link link-dark"> Setting </a>
+          <a href="#" class="nav-link link-dark">Setting</a>
         </li>
       </ul>
+
+
 
       <div>
         <div style="
@@ -178,165 +253,13 @@
                   Close
                 </button>
               </div>
+
+
+
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div style="flex: 1">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <div style="display: flex; justify-content: space-between; width: 100%;">
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
-              <div class="dropdown" style="margin-right: 100px;">
-                <button class="btn btn-secondary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                    <path fill-rule="evenodd"
-                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                  </svg>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">My Profile</a></li>
-                  <li><a class="dropdown-item" href="#">Change Password</a></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-6 col-lg-6">
-            <div class="card l-bg-cherry">
-              <div class="card-statistic-3 p-4">
-                <div class="card-icon card-icon-large">
-                  <i class="fas fa-shopping-cart"></i>
-                </div>
-                <div class="mb-4">
-                  <h5 class="card-title mb-0">Voters</h5>
-                </div>
-                <div class="row align-items-center mb-2 d-flex">
-                  <div class="col-8">
-                    <h2 class="d-flex align-items-center mb-0">Count</h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-6 col-lg-6">
-            <div class="card l-bg-blue-dark">
-              <div class="card-statistic-3 p-4">
-                <div class="card-icon card-icon-large">
-                  <i class="fas fa-users"></i>
-                </div>
-                <div class="mb-4">
-                  <h5 class="card-title mb-0">Voters</h5>
-                </div>
-                <div class="row align-items-center mb-2 d-flex">
-                  <div class="col-8">
-                    <h2 class="d-flex align-items-center mb-0">Count</h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-6 col-lg-6">
-            <div class="card l-bg-green-dark">
-              <div class="card-statistic-3 p-4">
-                <div class="card-icon card-icon-large">
-                  <i class="fas fa-ticket-alt"></i>
-                </div>
-                <div class="mb-4">
-                  <h5 class="card-title mb-0">Karyakarta Count</h5>
-                </div>
-                <div class="row align-items-center mb-2 d-flex">
-                  <div class="col-8">
-                    <h2 class="d-flex align-items-center mb-0">Count</h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-6 col-lg-6">
-            <div class="card l-bg-orange-dark">
-              <div class="card-statistic-3 p-4">
-                <div class="card-icon card-icon-large">
-                  <i class="fas fa-dollar-sign"></i>
-                </div>
-                <div class="mb-4">
-                  <h5 class="card-title mb-0">Voters</h5>
-                </div>
-                <div class="row align-items-center mb-2 d-flex">
-                  <div class="col-8">
-                    <h2 class="d-flex align-items-center mb-0">Count</h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="width: 80%; margin: auto;">
-            <canvas id="myChart" style="width:100%;"></canvas>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-  <script>
-    function fetchKarykartaCount() {
-      fetch("/api/town_user_register/")
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    fetchKarykartaCount();
-  </script>
-  <script>
-    const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    const yValues = [55, 49, 44, 24, 15];
-    const barColors = ["red", "green", "blue", "orange", "brown"];
 
-    new Chart("myChart", {
-      type: "bar",
-      data: {
-        labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
-        }]
-      },
-      options: {
-        legend: { display: false },
-        title: {
-          display: true,
-          text: "Live Result"
-        }
-      }
-    });
-  </script>
-</body>
-
-</html>
